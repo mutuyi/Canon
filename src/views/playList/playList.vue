@@ -111,6 +111,7 @@
 
 <script>
 import { getPlayList, getComment } from "@/network/home.js";
+import {getPlayListComment} from "@/network/playList.js";
 import comment from "@/components/comment/comment.vue";
 import songList from "@/components/song-list/song-list.vue"
 import pager from "@/components/pager/pager.vue"
@@ -174,7 +175,7 @@ export default {
       return year + "-" + month + "-" + date;
     },
     pager(){
-      return Math.ceil(parseInt(this.comment.totalCount)/20)
+      return Math.ceil(parseInt(this.comment.total)/20)
     }
   },
   methods: {
@@ -182,12 +183,9 @@ export default {
       getPlayList(this.id).then((res) => {
         this.playListConfig = res.data.playlist;
       });
-      getComment("2", this.id, "3").then((res) => {
-        this.comment = res.data.data;
-        this.cursor = res.data.data.cursor
-      });
-      getComment("2",this.id,"2").then((res) => {
-        this.hotComment = res.data.data;
+      getPlayListComment(this.id,20).then((res) => {
+        this.comment = res.data;
+        this.hotComment = res.data.hotComments
       });
     },
     playPlayList(){
@@ -199,9 +197,8 @@ export default {
     },
     update(index){
       
-        getComment("2",this.id,"3",index,this.cursor).then((res) => {
-          this.comment = res.data.data;
-          this.cursor = res.data.data.cursor
+        getPlayListComment(this.id,20,(index-1)*20).then((res) => {
+          this.comment = res.data;
         });
         if(parseInt(index)>1){
           this.isNeedHot = false

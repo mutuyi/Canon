@@ -77,7 +77,7 @@
                 style="width: 20px; height: 20px"
                 alt=""
               />
-              <div>({{ comment.totalCount }})</div>
+              <div>({{ comment.total }})</div>
             </a>
           </div>
           <div class="lyric" :key="songId">
@@ -110,8 +110,9 @@
 
 <script>
 import { getSong, getLyric, getComment } from "@/network/home.js";
-import comment from "@/components/comment/comment.vue"
-import pager from "@/components/pager/pager.vue"
+import {getSongComment} from "@/network/song.js";
+import comment from "@/components/comment/comment.vue";
+import pager from "@/components/pager/pager.vue";
 
 export default {
   name: "",
@@ -222,8 +223,8 @@ export default {
       return { timer, lrc };
     },
     pager(){
-      console.log(Math.ceil(parseInt(this.comment.totalCount)/20))
-      return Math.ceil(parseInt(this.comment.totalCount)/20)
+      console.log(Math.ceil(parseInt(this.comment.total)/20))
+      return Math.ceil(parseInt(this.comment.total)/20)
     }
   },
   methods: {
@@ -237,12 +238,9 @@ export default {
       getLyric(this.songId).then((res) => {
         this.lyric = res.data.lrc.lyric;
       });
-      getComment("0",this.songId,"2").then((res) => {
-        this.hotComment = res.data.data;
-      });
-      getComment("0",this.songId,"3").then((res) => {
-        this.comment = res.data.data;
-        this.cursor = res.data.data.cursor
+      getSongComment(this.songId,20).then((res) => {
+        this.hotComment = res.data.hotComments;
+        this.comment = res.data
       });
       if(this.auto){clearInterval(this.auto)}else{ 
         this.rotate()}
@@ -291,10 +289,8 @@ export default {
       this.$store.dispatch("insertPlayList",[this.songConfig])
     },
     update(index){
-      
-        getComment("0",this.songId,"3",index,this.cursor).then((res) => {
-          this.comment = res.data.data;
-          this.cursor = res.data.data.cursor
+        getSongComment(this.songId,20,(parseInt(index)-1)*20).then((res) => {
+          this.comment = res.data;
         });
         if(parseInt(index)>1){
           this.isNeedHot = false

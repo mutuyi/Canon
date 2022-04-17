@@ -2,7 +2,7 @@
   <div class="commentWrap">
     <div class=" flex-row commentTitle">
       <p style="margin:0;">评论</p>
-      <p  class="subcommentTitle">共{{ commentList.totalCount }}条评论</p>
+      <p  class="subcommentTitle">共{{ commentList.total}}条评论</p>
     </div>
     <div class="flex-row createComment">
       <img
@@ -28,14 +28,14 @@
     <div class="hotComment" v-if="(hotCommentList != undefined)&&(isNeedHotComment)">
       <div class="hotCommentTitle">精彩评论</div>
       <comment-item
-        v-for="item in hotCommentList.comments"
+        v-for="item in hotCommentList"
         :item="item"
         :key="item.commentId"
       ></comment-item>
     </div>
 
     <div class="newComment">
-      <div class="newCommentTitle"  id="comment">最新评论({{commentList.totalCount}})</div>
+      <div class="newCommentTitle"  id="comment">最新评论({{commentList.total}})</div>
       <comment-item
         v-for="item in commentList.comments"
         :item="item"
