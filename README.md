@@ -1,6 +1,7 @@
 # Canon
 文档还有待时间书写
 具体项目功能设计请先查看思维导图
+https://pic.dogimg.com/2022/04/18/625cf59edd4fd.png
 [![已完成功能(组件).png](https://pic.dogimg.com/2022/04/18/625cf59edd4fd.png)](https://pic.dogimg.com/2022/04/18/625cf59edd4fd.png)
 
 <h3>项目本地运行</h3>
