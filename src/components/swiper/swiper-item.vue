@@ -24,6 +24,6 @@ export default {
 .swiper-item-img{
   width:730px;
   max-height:285px;
-  height:284.5px
+  height:285px
 }
 </style>

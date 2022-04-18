@@ -136,7 +136,7 @@ export default {
   justify-content: center;
   align-items: center;
   width:1105px;
-  height: 284px;
+  height: 285px;
 }
 .btnl {
   display: flex;

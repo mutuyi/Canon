@@ -6,6 +6,7 @@
         alt=""
         width="17px"
         height="17px"
+        v-show="songConfig.id==playingSong.id"
       />
     </div>
     <div class="songName" :style="{ width: '354px' }">
@@ -40,6 +41,7 @@ export default {
   data() {
     return {
       songConfig: {},
+      playingSong:this.$store.state.songConfig,
       color: "#b3b3b3",
       btnColor:'#9b9b9b',
       lightColor:'#ffffff',
@@ -49,6 +51,9 @@ export default {
     item() {
       this.songConfig = this.data;
     },
+    "$store.state.songConfig"(newVal){
+      this.playingSong = newVal;
+    }
     // "$store.state.currentTime"(){
     //   this.color = "#cc1111"
     // }
