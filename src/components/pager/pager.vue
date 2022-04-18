@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap flex-row" v-if="!(pager == 1)"  >
+  <div class="wrap flex-row" v-if="(total > 1)"  >
     <div class="btn margin" @click="prev()" style="background:linear-gradient(to bottom,white,#e8e8e8)">&#65308;上一页</div>
     <div :class="[{'clicked':current==1},'btn','margin']" @click="jumpTo(1)"  >1</div>
     <div class=" more">
