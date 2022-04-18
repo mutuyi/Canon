@@ -1,7 +1,7 @@
 # Canon
 文档还有待时间书写
 具体项目功能设计请先查看思维导图
-<img src="https://pic.dogimg.com/2022/04/18/625cf59edd4fd.png" width="100%" height="100%">
+[![已完成功能(组件).png](https://pic.dogimg.com/2022/04/18/625cf59edd4fd.png)](https://pic.dogimg.com/2022/04/18/625cf59edd4fd.png)
 
 <h3>项目本地运行</h3>
 <br />
