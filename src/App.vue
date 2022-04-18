@@ -12,6 +12,7 @@
     <section class="playerContainer">
       <keep-alive><play-bar style="z-index:1001;"></play-bar></keep-alive>
     </section>
+    <back-top class="backTop"></back-top>
   </div>
 </template>
 
@@ -20,6 +21,7 @@ import navBar from "@/components/navbar/nav-bar.vue";
 import subNav from "@/components/subnav/sub-nav.vue";
 import playBar from "@/components/playbar/play-bar.vue";
 import search from "@/components/search/search.vue";
+import backTop from "@/components/backTop/backTop.vue"
 
 export default {
   name: "",
@@ -28,6 +30,7 @@ export default {
     playBar,
     subNav,
     search,
+    backTop
   },
   props: {},
   data() {
@@ -85,7 +88,12 @@ export default {
   background: rgba(1, 1, 1, 0.8);
   z-index:1001;
 }
-.oper {
+.backTop{
+  position:fixed;
+  right:22%;
+  bottom:16%;
+}
+/* .oper {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -124,6 +132,6 @@ export default {
 .loginBtnText:hover {
   color: white;
   text-decoration: underline;
-}
+} */
 
 </style>

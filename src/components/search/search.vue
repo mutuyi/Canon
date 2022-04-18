@@ -12,7 +12,7 @@
         onfocus="placeholder = ''"
         onblur="placeholder='音乐/视频/电台/用户'"
         @click="showResults()"
-        @input="getSuggestion"
+        @input="run"
         @keydown.enter="redirect()"
       />
     </div>
@@ -26,6 +26,7 @@
 import { getSearchSuggestion } from "@/network/home.js";
 import resultCard from './resultCard.vue'
 
+let newTimer = null;
 export default {
   name: "search",
   components: {
@@ -60,21 +61,45 @@ export default {
     getSuggestion() {
       // 加装防抖
       this.isShow = true;
-      clearTimeout(this.timer);
-      this.timer = setTimeout(() => {
-        getSearchSuggestion(this.value).then((res) => {
-          this.result = res;
-          console.log(res)
-        });
-      },300);
+      // clearTimeout(this.timer);
+      // this.timer = setTimeout(() => {
+      //   getSearchSuggestion(this.value).then((res) => {
+      //     this.result = res;
+      //   });
+      // },300);
       if(this.value ==""){
         this.isShow = false
       }
+      return 
     },
     redirect(){
       if(this.value!=""){
         this.$router.push({name:"search",query:{s:this.value,type:1}})
       }
+    },
+    getSt(){
+      this.isShow = true;
+      if(this.value ==""){
+        this.isShow = false
+        return
+      }
+      getSearchSuggestion(this.value).then((res) => {
+          this.result = res;
+      })
+      
+    },
+    debounce(fun){
+      return (function(){
+        if(newTimer!=null){
+          clearTimeout(newTimer)
+        }   
+          newTimer = setTimeout(()=>{
+            fun.apply(this)
+          },300)
+      })()
+    },
+    run(){
+      this.debounce(this.getSt)
     }
   },
   created() {},

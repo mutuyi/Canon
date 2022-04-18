@@ -210,7 +210,6 @@
                   @mouseleave.native="removeTouchId()"
                 >
                  <div class="btnBg" :style="item.id+'原创榜'==touchId?'display:flex':''"><play-btn
-                    
                     width="17px"
                     height="17px"
                     color="#787777"
