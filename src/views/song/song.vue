@@ -165,10 +165,13 @@ export default {
             let height = 125 + -(index * 18.39);
             if (height < 0) {
               lyricBox.style.top = height + "px";
-              
             }
           }
         });
+      }
+      else{
+        clearInterval(this.auto)
+        // this.rotateDeg=0
       }
       if(this.currentTime=="00:00"){
           lyricBox.style.top =0;
@@ -365,7 +368,7 @@ border-right:2px solid #d5d5d5;
   top: 36px;
   left: 37px;
   z-index: 1;
-  transition:0.5s  ease;
+  transition:1s  ease;
 }
 .outChain {
   font-size: 12px;
