@@ -91,6 +91,7 @@ export default new Vuex.Store({
                 state.nextSong = getNextSong(state.playList, oldSong)
             } else {
                 state.nextSong = getNextSong(state.randomPlayList, oldSong)
+
             }
         },
         GETPREVSONG(state, oldSong) {

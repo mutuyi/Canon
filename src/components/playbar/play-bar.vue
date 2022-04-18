@@ -66,7 +66,6 @@ export default {
       this.prevSong = newVal
     },
     "$store.state.isPlay"(newVal){
-      console.log(newVal)
       document.title="\u25b6 "+this.songConfig.name
       if(newVal == false){
          document.title = '(伪)网易云音乐'
@@ -147,16 +146,19 @@ export default {
             }
     },
     shuffle(var1){
-      const result = JSON.parse(JSON.stringify(var1))
+      let result = JSON.parse(JSON.stringify(var1))
       let index=-1
       let lastIndex = result.length -1
       while(++index<result.length){
+        //从0-99中取出个随机数，例如，39
         const rand = Math.floor(Math.random()*(lastIndex-index+1))
+        console.log(rand)
         const value = result[rand]
         result[rand] = result[index]
         result[index] = value
-        return result
+        
       }
+      return result
     }
 
   },
