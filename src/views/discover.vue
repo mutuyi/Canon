@@ -1,8 +1,8 @@
 <template>
   <div>
-    <swiper class="swiper"></swiper>
-    <div class="wrap-main">
-      <div class="wrap-left">
+    <swiper class="swiper flex-row-center"></swiper>
+    <div class="wrap-main flex-row-center">
+      <div class="wrap-left flex-column">
         <card :title="title">
           <template #subCardHeader
             ><div id="subCardHeader">
@@ -17,7 +17,6 @@
               <div class="subCardHeaderItem">电子</div>
             </div></template
           >
-          <template>
             <div class="playListWrap">
               <play-list-item
                 class="playerListItem"
@@ -26,7 +25,6 @@
                 :item="item"
               ></play-list-item>
             </div>
-          </template>
         </card>
         <card :title="title1">
           <template #subCardHeader></template>
@@ -404,10 +402,6 @@ export default {
 </script>
 <style scoped>
 .wrap-main {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-
   width: 100%;
   min-width: 980px;
   background: #f5f5f5;
@@ -415,9 +409,6 @@ export default {
 }
 .swiper {
   position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
   width: 100%;
   min-width: 1105px;
@@ -426,8 +417,6 @@ export default {
 }
 
 .wrap-left {
-  display: flex;
-  flex-direction: column;
   background: white;
   width: 730px;
   margin-bottom: 50px;
@@ -586,7 +575,7 @@ export default {
   /* justify-content: center; */
   align-items: center;
   width: 250px;
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   border-bottom: none;
   border-top: none;
 }
@@ -627,6 +616,7 @@ export default {
   justify-content: space-around;
   padding-left: 10px;
   width: 138px;
+  font-size:12px;
 }
 .hotArtists p {
   padding: 0;

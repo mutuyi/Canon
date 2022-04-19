@@ -1,6 +1,7 @@
 @import 'normalize.css';
 :root {
-    --a-color: argb(1, 1, 1, 0.1)
+    --a-color: argb(1, 1, 1, 0.1);
+    --TEST-COLOR: #ccc;
 }
 
 * {
@@ -32,4 +33,10 @@ a:visited {
 .flex-column {
     display: flex;
     flex-direction: column;
+}
+
+.flex-row-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }

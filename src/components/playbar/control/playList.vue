@@ -153,6 +153,7 @@ svg {
 .listCount {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
   width: 38px;
   height: 18px;
@@ -163,7 +164,7 @@ svg {
   transform: translateX(-45%);
 }
 .listCountText {
-  margin-left: 17px;
+  margin-left: 3px;
   font-size: 12px;
   color: #797979;
   transform: scale(0.9);

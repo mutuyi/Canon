@@ -21,7 +21,7 @@ export default new Vuex.Store({
         prevSong: {},
         playList: [songConfig],
         randomPlayList: [],
-
+        isShowList: false,
 
     },
     getters: {

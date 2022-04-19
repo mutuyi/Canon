@@ -2,11 +2,14 @@
   <div class="playListItemWrap" style="position: relative">
     <div style="position: relative; height: 140px; width: 140px">
       <router-link :to="{name:'playlist',query:{id:itemList.id}}"
-        ><img
+        >
+        <div class="cover">
+          <div class="msk"></div>
+          <img
           :src="itemList.picUrl+'?param=140y140'"
           alt="playlist photo"
           style="width: 140px; height: 140px"
-      /></router-link>
+      /></div></router-link>
       <div class="bottom">
         <div class="counts">
           <img
@@ -90,6 +93,18 @@ export default {
   width: 140px;
   height: 204px;
   margin-bottom: 48px;
+}
+.cover{
+  position:relative;
+}
+.msk{
+  /* 雪碧图用法 */
+  position:absolute;
+  left:0;
+  top:0;
+  width:140px;
+  height:140px;
+  background:url('~@/assets/img/coverall.png')no-repeat 0 0;
 }
 .bottom {
   position: absolute;
