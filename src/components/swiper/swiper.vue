@@ -1,6 +1,6 @@
 <template>
   <div
-    :style="{background:'no-repeat '+'url(' + imageUrl + '?imageView&blur=40x20) '+'center '+'/ 6000px'}"
+    :style="{background:'no-repeat '+'url(' + imageUrl + '?imageView&blur=40x20) '+'center '+'/ 6000px',transition:'1s ease-in'}"
     @mouseenter="stop()"
     @mouseleave="autoPlay()"
     class="main"
@@ -9,21 +9,14 @@
       <div class="btnl" @click="moveLeft()">
         <img src="@/assets/img/arrow2l.png" alt="theLeftButton" />
       </div>
-      <swiper-item
+      <div class="swiper-item-wrap"><swiper-item
         v-for="(item, index) in banners"
         :picURL="item.imageUrl + ''"
         :key="index"
-        :style="
-          activeIndex == index ? 'display:block;height:100%' : 'display:none'
-        "
-      ></swiper-item>
-      <div class="sideDownload">下载客户端的广告</div>
-      <div class="btnr" @click="moveRight()">
-        <img src="@/assets/img/arrow2r.png" alt="theRightButton" />
-      </div>
-    </div>
-
-    <div class="dots">
+        class="swiper-item"
+        :style="activeIndex == index ? 'opacity:1;height:100%;transition:opacity 1s ease-in 0s;' : 'opacity:0;transition:opacity 1s ease-out;'"
+        ></swiper-item>
+      <div class="dots">
       <div
         v-for="(item, index) in banners"
         :key="index"
@@ -31,7 +24,15 @@
         :style="index == activeIndex ? 'background:red' : ''"
         @mouseover="handler(index)"
       ></div>
+    </div></div>
+      
+      <div class="sideDownload">下载客户端的广告</div>
+      <div class="btnr" @click="moveRight()">
+        <img src="@/assets/img/arrow2r.png" alt="theRightButton" />
+      </div>
     </div>
+
+    
   </div>
 </template>
 
@@ -150,6 +151,14 @@ export default {
   cursor: pointer;
   background: rgba(0.31, 0.1, 0.1, 0.1);
 }
+.swiper-item-wrap{
+  position:relative;
+  width:730px;
+  height:285px;
+}
+.swiper-item{
+  position:absolute;
+}
 .btnr {
   display: flex;
   justify-content: center;
@@ -189,7 +198,7 @@ export default {
   height: 26px;
   background: rgba(0.1, 0.1, 0.1, 0.1);
   bottom: 0px;
-  margin-right: 250px;
+  /* margin-right: 250px; */
 }
 .dotsItem {
   margin: 0 8px;
